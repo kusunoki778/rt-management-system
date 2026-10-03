@@ -17,6 +17,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('role', ['admin', 'bendahara', 'ketua_rt', 'warga'])->default('warga');
+            $table->unsignedBigInteger('warga_id')->nullable();
+            $table->string('profile_photo')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

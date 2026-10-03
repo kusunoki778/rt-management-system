@@ -1,11 +1,94 @@
 @import 'tailwindcss';
 
-@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
-@source '../../storage/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
-
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+  --color-primary-50: #f0fdf4;
+  --color-primary-100: #dcfce7;
+  --color-primary-200: #bbf7d0;
+  --color-primary-300: #86efac;
+  --color-primary-400: #4ade80;
+  --color-primary-500: #22c55e;
+  --color-primary-600: #16a34a;
+  --color-primary-700: #15803d;
+  --color-primary-800: #166534;
+  --color-primary-900: #14532d;
+  --color-primary-950: #052e16;
+}
+
+@layer components {
+  /* Sidebar */
+  .sidebar-item {
+    @apply flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-slate-400 text-sm font-medium transition-all duration-150 hover:bg-slate-800 hover:text-white;
+  }
+  .sidebar-item.active {
+    @apply bg-emerald-600 text-white font-semibold shadow-sm shadow-emerald-600/30;
+  }
+  .sidebar-item svg {
+    @apply w-5 h-5 flex-shrink-0 transition-transform duration-150;
+  }
+  .sidebar-item:hover svg {
+    @apply scale-105;
+  }
+
+  /* Cards */
+  .card, .card-panel {
+    @apply bg-white rounded-2xl border border-slate-200/80 shadow-sm shadow-slate-100 p-6 transition-all;
+  }
+
+  /* Buttons */
+  .btn-primary, .btn-emerald {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-emerald-600 text-white text-sm font-semibold rounded-xl hover:bg-emerald-700 active:bg-emerald-800 transition-all duration-150 shadow-sm shadow-emerald-600/20 disabled:opacity-50 cursor-pointer;
+  }
+  .btn-secondary, .btn-white {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-white text-slate-700 text-sm font-semibold rounded-xl border border-slate-200 hover:bg-slate-50 hover:border-slate-300 transition-all duration-150 shadow-sm shadow-slate-100 cursor-pointer;
+  }
+  .btn-danger, .btn-rose {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-rose-600 text-white text-sm font-semibold rounded-xl hover:bg-rose-700 active:bg-rose-800 transition-all duration-150 shadow-sm shadow-rose-600/20 cursor-pointer;
+  }
+
+  /* Forms */
+  .form-input, .form-ctrl {
+    @apply w-full rounded-xl border border-slate-200/90 bg-white px-3.5 py-2.5 text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all duration-150;
+  }
+  .form-label, .form-lbl {
+    @apply block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5;
+  }
+
+  /* Badges */
+  .badge-status {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold tracking-tight;
+  }
+  .badge-green, .badge-emerald {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-700 ring-1 ring-emerald-600/20;
+  }
+  .badge-red, .badge-rose {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold bg-rose-50 text-rose-700 ring-1 ring-rose-600/20;
+  }
+  .badge-yellow, .badge-amber {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold bg-amber-50 text-amber-700 ring-1 ring-amber-600/20;
+  }
+  .badge-blue, .badge-indigo {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold bg-indigo-50 text-indigo-700 ring-1 ring-indigo-600/20;
+  }
+  .badge-gray, .badge-slate {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 ring-1 ring-slate-200;
+  }
+}
+
+/* Print styles for Laporan */
+@media print {
+  aside, header, footer, .no-print, button, form, .btn-primary, .btn-secondary {
+    display: none !important;
+  }
+  .lg\:pl-64 {
+    padding-left: 0 !important;
+  }
+  body, main {
+    background: white !important;
+    padding: 0 !important;
+  }
+  .card, .card-panel {
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: none !important;
+    padding: 1rem !important;
+  }
 }
